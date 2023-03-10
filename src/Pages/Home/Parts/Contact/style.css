@@ -1,0 +1,11 @@
+.btn-send {
+  background-color: #101010;
+}
+
+.btn-send:hover {
+  background-color: #272727;
+}
+
+.bg-contact {
+  background: rgb(255, 255, 255, 0.1);
+}
