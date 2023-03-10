@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Swal from "sweetalert2";
 import { Button } from "../../Component/Atoms";
 import { Navbar } from "../../Component/Molecules";
 import Contact from "./Parts/Contact";
 import Footer from "./Parts/Footer";
+import emailjs from "@emailjs/browser";
 import "./style.css";
+import Portfolio from "./Parts/Portfolio";
 
 export default function Home() {
   const [input, setInput] = useState("");
@@ -14,8 +16,9 @@ export default function Home() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const period = 500;
-  const toRotate = ["Muchlis Aryana S.Kom", "Frontend Developer"];
+  const toRotate = ["Muchlis", "Frontend Developer", "Graphic Designer"];
   const resumePW = "pw234";
+  const email = useRef();
 
   useEffect(() => {
     let ticker = setInterval(() => {
@@ -74,28 +77,32 @@ export default function Home() {
       showCancelButton: true,
       confirmButtonText: "Send",
       showLoaderOnConfirm: true,
-      preConfirm: (login) => {
-        return console.log(login);
-        // return fetch(`//api.github.com/users/${login}`)
-        //   .then((response) => {
-        //     if (!response.ok) {
-        //       throw new Error(response.statusText);
-        //     }
-        //     return response.json();
-        //   })
-        //   .catch((error) => {
-        //     Swal.showValidationMessage(`Request failed: ${error}`);
-        //   });
+      preConfirm: () => {
+        return emailjs.sendForm(
+          "service_vthscjn",
+          "template_r0jw6hn",
+          email.current,
+          "lDTRe59WjIC2Z8fRd"
+        );
       },
       allowOutsideClick: () => !Swal.isLoading(),
-    }).then((result) => {
-      if (result.isConfirmed) {
+    }).then(
+      (result) => {
+        console.log(result);
         Swal.fire({
-          title: `${result.value.login}'s avatar`,
-          imageUrl: result.value.avatar_url,
+          icon: "success",
+          title: "Request Password success Send",
+        });
+      },
+      (error) => {
+        console.log(error.text);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.text,
         });
       }
-    });
+    );
   };
   return (
     <>
@@ -109,41 +116,47 @@ export default function Home() {
                 Hi! I'm <span className="flex-wrap font-bold">{text}</span>
               </h1>
               <div>
-                <div className="text-center py-2 text-sm md:text-xl opacity-75">
-                  Please enter password to view my resume
+                <div className="text-center py-2 text-xs md:text-xl ">
+                  Enter password to view my resume
                 </div>
-                <div className="relative  ">
-                  <input
-                    className="text-black p-2 pl-4  rounded-full focus:outline-none opacity-50 w-full  "
-                    type="password"
-                    placeholder="input password"
-                    onChange={(e) => setInput(e.target.value)}
-                  />
-                  <Button
-                    text={disabled ? `Submit` : `Let's go`}
-                    onClick={viewResume}
-                    disabled={disabled}
-                    className={
-                      disabled
-                        ? `bg-orange-700 absolute right-0 p-2 rounded-full px-4 cursor-not-allowed`
-                        : `bg-orange-600 absolute right-0 p-2 rounded-full px-4`
-                    }
-                  />
+                <div>
+                  <form className="flex">
+                    <input
+                      className="text-black p-2 pl-4 rounded-full  focus:outline-none w-full "
+                      type="password"
+                      placeholder="input password"
+                      onChange={(e) => setInput(e.target.value)}
+                    />
+
+                    <Button
+                      text={disabled ? `Submit` : `Let's go`}
+                      onClick={viewResume}
+                      disabled={disabled}
+                      className={`p-2 rounded-full px-4 ml-1  ${
+                        disabled
+                          ? `bg-orange-700 cursor-not-allowed`
+                          : `bg-orange-600 `
+                      }`}
+                    />
+                  </form>
                 </div>
                 <div className="text-center text-xs pt-3">
-                  <span className="opacity-50">You want password? </span>
-                  <span
-                    onClick={clickEmail}
-                    className="cursor-pointer hover:underline"
-                  >
-                    Request password
-                  </span>
+                  <form ref={email} onSubmit={clickEmail}>
+                    <span>You want password? </span>
+                    <span
+                      onClick={clickEmail}
+                      className="cursor-pointer hover:underline text-orange-600 text-bold"
+                    >
+                      Request password
+                    </span>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <Portfolio />
       <Contact />
       <Footer />
     </>
