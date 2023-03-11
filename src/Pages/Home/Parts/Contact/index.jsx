@@ -14,7 +14,7 @@ export default function Contact({ ref }) {
   const sendEmail = (e) => {
     e.preventDefault();
     if (email === "" || message === "" || name === "") {
-      alert("form kudu di isi");
+      alert("form harus diisi di isi");
     } else if (!regexEmail.test(email)) {
       alert("Format email tidak sesuai");
     } else {
@@ -23,7 +23,7 @@ export default function Contact({ ref }) {
           "service_vthscjn",
           "template_eqvwj4p",
           form.current,
-          "lDTRe59WjIC2Z8fRd"
+          process.env.REACT_APP_KEY_PUBLIC
         )
         .then(
           (result) => {
@@ -37,7 +37,7 @@ export default function Contact({ ref }) {
             setMessage("");
           },
           (error) => {
-            console.log(error.text);
+            console.log("error", error);
             Swal.fire({
               icon: "error",
               title: "Oops...",
