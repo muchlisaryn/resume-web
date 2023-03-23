@@ -1,0 +1,21 @@
+$radius: 4px;
+$primary-gray: #101010;
+$secondary-gray: #272727;
+$primary-orange: #ea580c;
+$dark-orange: #c2410c;
+
+@mixin rounded {
+  border-radius: $radius;
+}
+
+@mixin bg-primary-gray {
+  background-color: $primary-gray;
+}
+
+@mixin bg-secondary-gray {
+  background-color: $secondary-gray;
+}
+
+@mixin bg-primary-orange {
+  background-color: $primary-orange;
+}

@@ -3,7 +3,7 @@ import { Button } from "../../Component/Atoms";
 import { Navbar } from "../../Component/Molecules";
 import Contact from "./Parts/Contact";
 import Footer from "./Parts/Footer";
-import "./style.css";
+import "./style.scss";
 import Portfolio from "./Parts/Portfolio";
 
 export default function Home() {
@@ -67,46 +67,36 @@ export default function Home() {
 
   return (
     <>
-      <div className="App h-screen">
+      <div className="header">
         <Navbar />
-        <div className="grid items-center h-screen">
-          <div className="flex justify-center">
-            <div className=" text-white">
-              <div className="text-center mb-4">Wellcome! 👋</div>
+        <div className="container">
+          <div className="content">
+            <div>
+              <div className="say-hello">Wellcome! 👋</div>
               <div className="text-2xl max-w-xs md:max-w-screen-md md:text-4xl text-center">
                 Hi! I'm <span className="flex-wrap font-bold">{text}</span>
               </div>
-              <div>
-                <div className="text-center py-2 text-xs md:text-lg opacity-40 ">
-                  Enter password to view my resume
-                </div>
-                <div className="flex justify-center">
-                  <form className="flex" onSubmit={viewResume}>
-                    <input
-                      className="text-black p-2 pl-4 rounded-full  focus:outline-none  "
-                      type="password"
-                      placeholder="input password"
-                      onChange={(e) => setInput(e.target.value)}
-                    />
+              <div className="title-desc">Enter password to view my resume</div>
+              <form onSubmit={viewResume}>
+                <input
+                  className="text-black "
+                  type="password"
+                  placeholder="input password"
+                  onChange={(e) => setInput(e.target.value)}
+                />
+                <Button
+                  text={disabled ? `Submit` : `Let's go`}
+                  onClick={viewResume}
+                  disabled={disabled}
+                  className={`btn-submit ${
+                    disabled ? `btn-disabled` : `btn-active `
+                  }`}
+                />
+              </form>
 
-                    <Button
-                      text={disabled ? `Submit` : `Let's go`}
-                      onClick={viewResume}
-                      disabled={disabled}
-                      className={`p-2 rounded-full px-4 ml-1 w-auto ${
-                        disabled
-                          ? `bg-orange-700 cursor-not-allowed`
-                          : `bg-orange-600 `
-                      }`}
-                    />
-                  </form>
-                </div>
-                <div className="text-center text-xs pt-3">
-                  You want password?
-                  <span className="cursor-pointer hover:underline text-orange-600 text-bold">
-                    Request password
-                  </span>
-                </div>
+              <div className="req-password">
+                You want password?
+                <span> Request password</span>
               </div>
             </div>
           </div>

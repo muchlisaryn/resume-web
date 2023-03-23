@@ -1,0 +1,25 @@
+@use "../../../index.scss" as style;
+
+nav {
+  position: fixed;
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+
+  .btn-contact {
+    @include style.rounded;
+    padding: 8px;
+  }
+}
+
+.nav-active {
+  @include style.bg-primary-orange;
+}
+
+.btn-scroll-active {
+  background-color: white;
+  color: style.$primary-orange;
+}

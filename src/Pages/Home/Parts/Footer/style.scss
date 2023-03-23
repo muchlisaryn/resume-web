@@ -1,0 +1,12 @@
+@use "../../../../index.scss" as style;
+
+footer {
+  @include style.bg-primary-gray;
+  color: white;
+  text-align: center;
+
+  .text {
+    font-size: 12px;
+    padding: 8px;
+  }
+}

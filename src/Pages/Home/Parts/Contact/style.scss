@@ -1,0 +1,61 @@
+@use "../../../../index.scss" as style;
+$w-full: 100%;
+
+.contact {
+  @include style.bg-primary-orange;
+  padding: 32px;
+  color: white;
+
+  .container {
+    display: flex;
+    justify-content: center;
+
+    .box-content {
+      background: rgb(255, 255, 255, 0.1);
+      padding: 16px;
+      @include style.rounded;
+
+      .title {
+        text-align: center;
+      }
+
+      form {
+        margin-top: 12px;
+        width: 320px;
+
+        .item-form {
+          margin-bottom: 12px;
+
+          .title-field {
+            margin-bottom: 2px;
+          }
+        }
+        input {
+          @include style.rounded;
+          width: $w-full;
+          padding: 8px;
+          color: black;
+        }
+        textarea {
+          @include style.rounded;
+          width: $w-full;
+          padding: 8px;
+          color: black;
+          height: 128px;
+        }
+        .btn-send {
+          @include style.rounded;
+          @include style.bg-primary-gray;
+          width: $w-full;
+          color: white;
+          padding: 4px;
+          margin-top: 4px;
+
+          &:hover {
+            @include style.bg-secondary-gray;
+          }
+        }
+      }
+    }
+  }
+}
