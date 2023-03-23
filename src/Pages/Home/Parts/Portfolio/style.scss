@@ -1,0 +1,7 @@
+@use "../../../../index.scss" as style;
+
+.portfolio {
+  @include style.bg-primary-gray;
+  text-align: center;
+  padding: 12px;
+}

@@ -28,7 +28,6 @@ export default function Navbar({ contact }) {
   return (
     <nav className={`${bgNavbar ? `nav-active` : ``}`}>
       <Logo />
-
       <Button
         text={"Contact me"}
         className={`btn-contact ${

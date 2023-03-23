@@ -1,5 +1,5 @@
-import "./style.css";
+import "./style.scss";
 
 export default function Portfolio() {
-  return <div className="portfolio text-white text-center p-2">Portfolio</div>;
+  return <div className="portfolio ">Portfolio</div>;
 }

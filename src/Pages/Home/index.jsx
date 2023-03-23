@@ -73,13 +73,12 @@ export default function Home() {
           <div className="content">
             <div>
               <div className="say-hello">Wellcome! 👋</div>
-              <div className="text-2xl max-w-xs md:max-w-screen-md md:text-4xl text-center">
-                Hi! I'm <span className="flex-wrap font-bold">{text}</span>
+              <div className="title">
+                Hi! I'm <span>{text}</span>
               </div>
               <div className="title-desc">Enter password to view my resume</div>
               <form onSubmit={viewResume}>
                 <input
-                  className="text-black "
                   type="password"
                   placeholder="input password"
                   onChange={(e) => setInput(e.target.value)}

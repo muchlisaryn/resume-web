@@ -10,10 +10,12 @@ $dark-orange: #c2410c;
 
 @mixin bg-primary-gray {
   background-color: $primary-gray;
+  color: white;
 }
 
 @mixin bg-secondary-gray {
   background-color: $secondary-gray;
+  color: white;
 }
 
 @mixin bg-primary-orange {

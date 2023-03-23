@@ -21,8 +21,19 @@
         margin-bottom: 16px;
       }
 
+      .title {
+        text-align: center;
+        font-size: 24px;
+
+        span {
+          font-weight: 700;
+        }
+      }
+
       .title-desc {
         text-align: center;
+        font-size: 14px;
+        margin: 8px 0px 8px 0px;
         color: hsl(0, 0%, 100%, 0.5);
       }
 
@@ -33,6 +44,7 @@
         input {
           @include style.rounded;
           padding: 8px;
+          color: black;
 
           &:focus {
             outline: none;

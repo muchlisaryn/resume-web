@@ -1,10 +1,11 @@
 import { LogoRocket } from "../../../Asset/img";
+import "./style.scss";
 
 export default function Logo() {
   return (
-    <div className="flex items-center">
-      <img src={LogoRocket} style={{ width: 15 }} />
-      <div className="ml-1">Muchlis</div>
+    <div className="logo">
+      <img src={LogoRocket} />
+      <div className="title">My Portofolio</div>
     </div>
   );
 }
